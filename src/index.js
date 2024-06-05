@@ -1,13 +1,13 @@
 const express = require('express');
-const dotenv = require('dotenv');
-
-dotenv.config();
+const {PORT, email} =  require('./config/server.config');
+const homePingController = require('./controllers/home.controller');
+const apiRouter = require('./routes');
 
 const app = express();
 
-const PORT = process.env.PORT; // PORT FOR THE SERVER.
+app.use('/api',apiRouter);
 
 
 app.listen(PORT,()=>{
-    console.log(`Stared server at port   :${PORT}`)
+    console.log(`Stared server at port :${PORT} ,${email}`)
 })
